@@ -3,3 +3,52 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem;
+}
+
+.container {
+  width: 80%;
+  margin-bottom: 3rem;
+}
+
+.heading {
+  margin: 1rem 0rem 0.5rem;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+}
+
+.category {
+  margin-bottom: 0.5rem;
+}
+
+.date {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.article {
+  margin-bottom: 0.5rem;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.text {
+  display: none;
+}
+
+.more {
+  color: blue;
+  font-weight: 900;
+  cursor: pointer;
+  margin-top: 1rem;
+}

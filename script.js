@@ -18,15 +18,35 @@
 
 //creating an article class with properties and methods
 class Article {
-  constructor(title, link, description, date) {
+  constructor(title, link, description, date, category) {
     this.title = title;
     this.link = link;
     this.description = description;
     this.date = date;
+    console.log(category);
+    this.category =
+      typeof category === "string" ? category : category.join(", ");
   }
+
   createArticle() {
     const article = document.createElement("div");
-    article.innerHTML = `<h3>${this.title}</h3><p>${this.date}</p><a href="${this.link}">The whole article.</a><p>${this.description}</p>`;
+    article.className = "container";
+    article.innerHTML = `<h3 class="heading">${this.title}</h3><p class="category">Category: ${this.category}</p><p class="date">${this.date}</p><a class="article" href="${this.link}">Read the whole article - ${this.title}</a><div class="text">${this.description}</div><p class="more">Read description</p>`;
+
+    const more = article.querySelector(".more");
+    let state = 0;
+    more.addEventListener("click", () => {
+      if (state === 0) {
+        article.querySelector(".text").style.display = "block";
+        more.textContent = "Close description";
+        state = 1;
+      } else {
+        article.querySelector(".text").style.display = "none";
+        more.textContent = "Read description";
+        state = 0;
+      }
+    });
+
     document.querySelector("body").appendChild(article);
   }
 }
@@ -38,15 +58,17 @@ fetch(
   .then((data) => {
     console.log(data);
     data.data.channel.item.forEach((element) => {
+      console.log(element.category);
       const art = new Article(
         element.title,
         element.link,
         element.description,
-        element.pubDate
+        element.pubDate,
+        element.category
       );
       art.createArticle();
     });
   })
   .catch((e) => {
-    console.log("The server was not found.");
+    console.log(e);
   });
