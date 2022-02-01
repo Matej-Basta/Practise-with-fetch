@@ -28,6 +28,7 @@ class Article {
       typeof category === "string" ? category : category.join(", ");
   }
 
+  //method that creates an article and ads a event listener on the button - Read more
   createArticle() {
     const article = document.createElement("div");
     article.className = "container";
@@ -51,6 +52,7 @@ class Article {
   }
 }
 
+//fetching the data and putting them on a page
 fetch(
   "https://classes.codingbootcamp.cz/assets/classes/602/guardian.php?cat=science"
 )
